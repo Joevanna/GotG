@@ -1,0 +1,308 @@
+@import url(http://fonts.googleapis.com/css?family=Rajdhani:300);
+
+* {
+ 	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	box-sizing: border-box;
+    @include transition(all 300ms ease-in-out);
+}
+
+html, body { height: 100%; }
+
+body {
+	background: url('../images/ironwall.jpg') #000 top center no-repeat;
+	background-attachment: fixed;
+	// background: url('../images/spac.jpg') center center fixed;
+	font-family: 'Rajdhani', sans-serif;
+	display: flex;
+}
+	
+.wrapper {
+	max-width: 90%;
+	margin: 0 auto;
+	display: none;
+
+	header img {
+		width: 100%;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		z-index: 2;
+		transition: all .4s linear;
+
+		&.active {
+			@include transform(scale(.5));
+			top: 10%;
+			left: 25%;
+		}
+	}
+}
+
+// *********************************************** //
+
+// HOMEPAGE SELECTION MENU
+
+// *********************************************** //
+
+.glow {
+	@include box-shadow( 
+		0 0 25px $colorDamnLight,
+    	0 1px 5px $colorBlack);
+	border-color: $colorDamnLight;
+	background: $colorDamnLight;
+	color: rgba($colorBlack, .7);
+}
+
+.nav {
+	height:100vh;
+	width: 400px;
+
+	ul {
+		position: fixed;
+  		top: 40%;
+  
+  		@include transform(translate(0, -50%));
+		position: relative;
+		left: -350%;
+	}
+	li {
+		list-style: none;
+		line-height: 50px;
+	    border: 1px solid $colorLight;
+	    border-bottom: none;
+	    background: rgba($colorLight, .3);
+	    color: $colorLight;
+	    font-size: 2em;
+	    text-align: center;
+	    cursor: pointer;
+		width: 400px;
+		height: 50px;
+		@include transition(all, .2s, ease-in-out);
+
+		&:last-child {
+			border-bottom: 1px solid $colorLight;
+		}
+
+		&:hover {
+			@extend .glow;
+	        font-size: 1.8em;
+	        z-index: 99;
+		}
+
+		&.selected {
+			@extend .glow;
+		  	@include box-shadow(0 3px 0 5px $colorBlack inset);
+		  
+		  	@for $i from 1 through 3 {
+		    	&:nth-child(#{$i}) {
+		      	top: 50px * ($i - 1);
+		      	@if $i % 2 == 0 {
+		        	@include transform3d(skew(45deg) scaleY(0) translate(100%));
+		      	} @else {
+		        	@include transform3d(skew(45deg) scaleY(0) translate(-100%));
+		      	}
+		    }
+		  }
+		}
+	}
+}
+
+ul.visible {
+	left: -100%;
+}
+
+
+// *********************************************** //
+
+// CHARACTER AND AUTHORS SELECTON STYLING 
+
+// *********************************************** //
+.container-authors {
+	display: none;
+}
+
+.container-characters {
+	display: none;
+	// display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	height: 100%;
+
+	.item {
+		display: flex;
+		flex-grow: 1;
+		align-items: flex-start;
+		text-align: center;
+		@include transition(all .5s ease);
+		background-image: url(http://placekitten.com/g/200/300);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: relative;
+		overflow: hidden;
+
+		p { 
+			display: none;
+
+		 }
+
+		&:hover {
+			flex-grow: 4;
+			box-shadow: inset 0 0 20px #000;
+
+			p { 
+				display: block;
+				align-self: flex-start;
+				font-size: 2em;
+				margin: 5% auto;
+				color: $colorLight;
+			 }
+		}
+
+		&:after {
+			content: "";
+			width: 200%;
+			height: 43.33%;
+			background: rgba($colorLight, .3);
+			position: absolute;
+			left: -50%;
+			bottom: -10%;
+			@include transform(rotate(-15deg));
+			color: $colorLight;
+			text-align: center;
+			padding-top: 20px;
+			text-transform: uppercase;
+			font-size: 3.5em;
+		}
+
+		&:nth-child(1) {
+			background-position: 70% center;
+			&:after {
+				content: "star lord";
+			}
+		}
+
+		&:nth-child(2) {
+			background-position: 45% center;
+			&:after {
+				content: "gamora";
+			}
+		}
+
+		&:nth-child(3) {
+			background-position: 70% center;
+			&:after {
+				content: "rocket racoon";
+			}
+		}
+
+		&:nth-child(4) {
+			background-position: 70% center;
+			&:after {
+				content: "groot";
+			}
+		}
+
+		&:nth-child(5) {
+			background-position: 75% center;
+			&:after {
+				content: "drax";
+			}
+		}
+	}
+}
+
+// *********************************************** //
+
+// COMICS SHOWCASE STYLING
+
+// *********************************************** //
+
+
+.comics {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	h1 {
+		display: block;
+		color: $colorLight;
+		font-size: 5em;
+		padding: 50px 0;
+		text-align: center;
+		width: 100%;
+		text-transform: uppercase;
+		text-shadow: 0px 0px 20px rgba($colorDamnLight, 1);
+	}
+
+	.book-container {
+		padding: 30px 0;
+		width: 30%;
+		position: relative;
+		-webkit-perspective: 1800px;
+		z-index: 10;
+
+		.book {
+			position: relative;
+			width: 250px;
+			height: 350px;
+			@include transition(transform .5s);
+			transform-style: preserve-3d;
+			backface-visibility: hidden;
+
+			&:hover { @include transform(rotate3d(0, 1, 0, 45deg)); }
+
+			.book__cover {
+				position: absolute;
+				background-color: rgba(#555, .4);
+				top: 0;
+				left: 0;
+				width: 250px;
+				height: 100%;
+				@include transform(translateZ(20px));
+			}
+
+			.book__spine {
+				position: absolute;
+				left: -20px;
+				width: 40px;
+				height: 350px;
+				@include transform(rotate3d(0, 1, 0, -90deg));
+
+				p {
+					width: 350px;
+					height: 40px;
+					margin: 0;
+					padding: 0 2em;
+					color: #fff;
+					background-color: #000;
+					font-size: 1.2em;
+					transform-origin: 0 0;
+					@include transform(rotate(90deg) translateY(-35px));
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

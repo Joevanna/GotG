@@ -1,0 +1,305 @@
+@import url(http://fonts.googleapis.com/css?family=Rajdhani:300);
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url("../images/ironwall.jpg") black top center no-repeat;
+  background-attachment: fixed;
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+}
+
+.wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+  display: none;
+}
+.wrapper header img {
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: all .4s linear;
+}
+.wrapper header img.active {
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  top: 10%;
+  left: 25%;
+}
+
+.glow, .nav li:hover, .nav li.selected {
+  -webkit-box-shadow: 0 0 25px #00dcdc, 0 1px 5px #212121;
+  -moz-box-shadow: 0 0 25px #00dcdc, 0 1px 5px #212121;
+  box-shadow: 0 0 25px #00dcdc, 0 1px 5px #212121;
+  border-color: #00dcdc;
+  background: #00dcdc;
+  color: rgba(33, 33, 33, 0.7);
+}
+
+.nav {
+  height: 100vh;
+  width: 400px;
+}
+.nav ul {
+  position: fixed;
+  top: 40%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  position: relative;
+  left: -350%;
+}
+.nav li {
+  list-style: none;
+  line-height: 50px;
+  border: 1px solid #00bebe;
+  border-bottom: none;
+  background: rgba(0, 190, 190, 0.3);
+  color: #00bebe;
+  font-size: 2em;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 50px;
+  -webkit-transition: all, 0.2s, ease-in-out;
+  -moz-transition: all, 0.2s, ease-in-out;
+  -o-transition: all, 0.2s, ease-in-out;
+  transition: all, 0.2s, ease-in-out;
+}
+.nav li:last-child {
+  border-bottom: 1px solid #00bebe;
+}
+.nav li:hover {
+  font-size: 1.8em;
+  z-index: 99;
+}
+.nav li.selected {
+  -webkit-box-shadow: 0 3px 0 5px #212121 inset;
+  -moz-box-shadow: 0 3px 0 5px #212121 inset;
+  box-shadow: 0 3px 0 5px #212121 inset;
+}
+.nav li.selected:nth-child(1) {
+  top: 0px;
+  -webkit-transform: skew(45deg) scaleY(0) translate(-100%);
+  -moz-transform: skew(45deg) scaleY(0) translate(-100%);
+  -ms-transform: skew(45deg) scaleY(0) translate(-100%);
+  -o-transform: skew(45deg) scaleY(0) translate(-100%);
+  transform: skew(45deg) scaleY(0) translate(-100%);
+}
+.nav li.selected:nth-child(2) {
+  top: 50px;
+  -webkit-transform: skew(45deg) scaleY(0) translate(100%);
+  -moz-transform: skew(45deg) scaleY(0) translate(100%);
+  -ms-transform: skew(45deg) scaleY(0) translate(100%);
+  -o-transform: skew(45deg) scaleY(0) translate(100%);
+  transform: skew(45deg) scaleY(0) translate(100%);
+}
+.nav li.selected:nth-child(3) {
+  top: 100px;
+  -webkit-transform: skew(45deg) scaleY(0) translate(-100%);
+  -moz-transform: skew(45deg) scaleY(0) translate(-100%);
+  -ms-transform: skew(45deg) scaleY(0) translate(-100%);
+  -o-transform: skew(45deg) scaleY(0) translate(-100%);
+  transform: skew(45deg) scaleY(0) translate(-100%);
+}
+
+ul.visible {
+  left: -100%;
+}
+
+.container-authors {
+  display: none;
+}
+
+.container-characters {
+  display: none;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100%;
+}
+.container-characters .item {
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-start;
+  text-align: center;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-image: url(http://placekitten.com/g/200/300);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.container-characters .item p {
+  display: none;
+}
+.container-characters .item:hover {
+  flex-grow: 4;
+  box-shadow: inset 0 0 20px #000;
+}
+.container-characters .item:hover p {
+  display: block;
+  align-self: flex-start;
+  font-size: 2em;
+  margin: 5% auto;
+  color: #00bebe;
+}
+.container-characters .item:after {
+  content: "";
+  width: 200%;
+  height: 43.33%;
+  background: rgba(0, 190, 190, 0.3);
+  position: absolute;
+  left: -50%;
+  bottom: -10%;
+  -webkit-transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+  -ms-transform: rotate(-15deg);
+  -o-transform: rotate(-15deg);
+  transform: rotate(-15deg);
+  color: #00bebe;
+  text-align: center;
+  padding-top: 20px;
+  text-transform: uppercase;
+  font-size: 3.5em;
+}
+.container-characters .item:nth-child(1) {
+  background-position: 70% center;
+}
+.container-characters .item:nth-child(1):after {
+  content: "star lord";
+}
+.container-characters .item:nth-child(2) {
+  background-position: 45% center;
+}
+.container-characters .item:nth-child(2):after {
+  content: "gamora";
+}
+.container-characters .item:nth-child(3) {
+  background-position: 70% center;
+}
+.container-characters .item:nth-child(3):after {
+  content: "rocket racoon";
+}
+.container-characters .item:nth-child(4) {
+  background-position: 70% center;
+}
+.container-characters .item:nth-child(4):after {
+  content: "groot";
+}
+.container-characters .item:nth-child(5) {
+  background-position: 75% center;
+}
+.container-characters .item:nth-child(5):after {
+  content: "drax";
+}
+
+.comics {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.comics h1 {
+  display: block;
+  color: #00bebe;
+  font-size: 5em;
+  padding: 50px 0;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 20px #00dcdc;
+}
+.comics .book-container {
+  padding: 30px 0;
+  width: 30%;
+  position: relative;
+  -webkit-perspective: 1800px;
+  z-index: 10;
+}
+.comics .book-container .book {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  -o-transition: -o-transform 0.5s;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.comics .book-container .book:hover {
+  -webkit-transform: rotate3d(0, 1, 0, 45deg);
+  -moz-transform: rotate3d(0, 1, 0, 45deg);
+  -ms-transform: rotate3d(0, 1, 0, 45deg);
+  -o-transform: rotate3d(0, 1, 0, 45deg);
+  transform: rotate3d(0, 1, 0, 45deg);
+}
+.comics .book-container .book .book__cover {
+  position: absolute;
+  background-color: rgba(85, 85, 85, 0.4);
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  -webkit-transform: translateZ(20px);
+  -moz-transform: translateZ(20px);
+  -ms-transform: translateZ(20px);
+  -o-transform: translateZ(20px);
+  transform: translateZ(20px);
+}
+.comics .book-container .book .book__spine {
+  position: absolute;
+  left: -20px;
+  width: 40px;
+  height: 350px;
+  -webkit-transform: rotate3d(0, 1, 0, -90deg);
+  -moz-transform: rotate3d(0, 1, 0, -90deg);
+  -ms-transform: rotate3d(0, 1, 0, -90deg);
+  -o-transform: rotate3d(0, 1, 0, -90deg);
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+.comics .book-container .book .book__spine p {
+  width: 350px;
+  height: 40px;
+  margin: 0;
+  padding: 0 2em;
+  color: #fff;
+  background-color: #000;
+  font-size: 1.2em;
+  transform-origin: 0 0;
+  -webkit-transform: rotate(90deg) translateY(-35px);
+  -moz-transform: rotate(90deg) translateY(-35px);
+  -ms-transform: rotate(90deg) translateY(-35px);
+  -o-transform: rotate(90deg) translateY(-35px);
+  transform: rotate(90deg) translateY(-35px);
+}

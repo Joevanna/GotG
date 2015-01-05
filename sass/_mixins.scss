@@ -1,0 +1,43 @@
+// prefix-free
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+      @if $vendors {
+        @each $vendor in $vendors {
+          #{"-" + $vendor + "-" + $property}: #{$value};
+        }
+      }
+      #{$property}: #{$value};
+}
+
+// example usage 
+
+// .element {
+//   @include prefix(transform, rotate(42deg), webkit ms);
+// }
+
+//*************************************
+
+
+// media queries
+
+@mixin breakpoint($name) {
+      @if map-has-key($breakpoints, $name) {
+        @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a breakpoint named `#{$name}`.";
+  }
+}
+
+// example usage 
+
+// .element {
+//   color: red;
+ 
+//   @include breakpoint(medium) {
+//     color: blue;
+//   }
+// }
+
