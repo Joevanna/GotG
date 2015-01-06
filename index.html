@@ -12,7 +12,6 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="stylesheets/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -30,17 +29,21 @@
 
             <nav class="nav" role="navigation">
                 <ul>
-                    <li>Characters</li>
-                    <li>Creators</li>
-                    <li>Comics</li>
+                    <li class="good-guys">Characters</li>
+                    <li class="bad-guys">Creators</li>
+                    <li class="comic">Comics</li>
                 </ul>
             </nav>
         </section>
 
         <section class="container-characters">
-            <div class="item">
-                
-            </div>
+            <script id="characters-template" type="text/x-handlebars-template">
+                {{#each Characters}}
+                    <div class="item">
+                       <img src="{{character.image}}" alt=""> 
+                    </div>
+                {{/each}}
+            </script>
             <div class="item">
                 
             </div>
@@ -55,111 +58,34 @@
             </div>
         </section>
 
-        <section class="container-authors">
-            <div class="item">
-                
-            </div>
-            <div class="item">
-                
-            </div>
-            <div class="item">
-                
-            </div>
-            <div class="item">
-                
-            </div>
-            <div class="item">
-               <p>some text to test functionality</p>
-            </div>
-        </section>
 
         <section class="comics">
             <h1>comics</h1>
-            <div class="book-container">
-                <article class="book is-rotated">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>AtoZ CSS guide <span>by Guy Routledge</span></p>
-                    </div>
-                </article>
-            </div>
-            <div class="book-container">
-                <article class="book is-rotated">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>AtoZ CSS guide <span>by Guy Routledge</span></p>
-                    </div>
-                </article>
-            </div>
-            <div class="book-container">
-                <article class="book is-rotated">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>Dummy texts</p>
-                    </div>
-                </article>
-            </div>
-            <div class="book-container">
-                <article class="book">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>bla bla bla</p>
-                    </div>
-                </article>
-            </div>
-            <div class="book-container">
-                <article class="book">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>Dummy text</p>
-                    </div>
-                </article>
-            </div>
-            <div class="book-container">
-                <article class="book">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>Dummy text</p>
-                    </div>
-                </article>
-            </div>
-            <div class="book-container">
-                <article class="book">
-                    <div class="book__cover">
-                       
-                    </div>
-                    <div class="book__spine">
-                        <p>Dummy text</p>
-                    </div>
-                </article>
-            </div>
-        </section>
 
-        <script id="characters-template" type="text/x-handlebars-template">
+            <div class="book-container">
+                 <script id="comics-template" type="text/x-handlebars-template">
             
-            {{#each characters}}
-                <div class="item"></div>
-            {{/each}}
-          
-        </script>
-      
-     
+                    {{#each Comics}}
+                        <div class="book-container">
+                        <article class="book">
+                            <div class="book__cover">
+                               <img src="{{}}" >
+                            </div>
+                            <div class="book__spine">
+                                <p>{{comics.name}}</p>
+                            </div>
+                        </article>
+                    </div>
+                    {{/each}}
+                  
+                </script>
+            </div>
+            
+        </section>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
-        <script src="handlebars-v2.0.0.js"></script>
+        <script src="js/handlebars-v2.0.0.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

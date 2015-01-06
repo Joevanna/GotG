@@ -16,7 +16,6 @@ body {
 	background-attachment: fixed;
 	// background: url('../images/spac.jpg') center center fixed;
 	font-family: 'Rajdhani', sans-serif;
-	display: flex;
 }
 	
 .wrapper {
@@ -111,7 +110,7 @@ body {
 }
 
 ul.visible {
-	left: -100%;
+	left: 0;
 }
 
 
@@ -120,13 +119,10 @@ ul.visible {
 // CHARACTER AND AUTHORS SELECTON STYLING 
 
 // *********************************************** //
-.container-authors {
-	display: none;
-}
 
 .container-characters {
-	display: none;
-	// display: flex;
+
+	display: flex;
 	flex-direction: row;
 	align-items: stretch;
 	height: 100%;
@@ -137,7 +133,6 @@ ul.visible {
 		align-items: flex-start;
 		text-align: center;
 		@include transition(all .5s ease);
-		background-image: url(http://placekitten.com/g/200/300);
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -223,7 +218,8 @@ ul.visible {
 
 
 .comics {
-	display: flex;
+	display: none;
+	// display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;

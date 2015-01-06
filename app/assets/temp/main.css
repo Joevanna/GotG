@@ -19,7 +19,6 @@ body {
   background: url("../images/ironwall.jpg") black top center no-repeat;
   background-attachment: fixed;
   font-family: 'Rajdhani', sans-serif;
-  display: flex;
 }
 
 .wrapper {
@@ -129,15 +128,11 @@ body {
 }
 
 ul.visible {
-  left: -100%;
-}
-
-.container-authors {
-  display: none;
+  left: 0;
 }
 
 .container-characters {
-  display: none;
+  display: flex;
   flex-direction: row;
   align-items: stretch;
   height: 100%;
@@ -151,7 +146,6 @@ ul.visible {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  background-image: url(http://placekitten.com/g/200/300);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -223,7 +217,7 @@ ul.visible {
 }
 
 .comics {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: center;
   justify-content: center;
