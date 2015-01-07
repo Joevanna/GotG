@@ -1,26 +1,29 @@
 $(document).ready(function() {
-	var url = "js/guardians.json";
-
-
+	var templateSource = $("#characters-template").html();
+	var template = Handlebars.compile(templateSource);
+	var resultsPlaceholder = $(".container-characters");
 
 	setTimeout(function() {
 		$("img").addClass("active");
         $(".nav ul").addClass("visible");
 	}, 500);
 	
-	// $('.nav li').click(function() {
-	// 	// $(this).toggleClass('selected');
+	$('.nav li').click(function() {
+		
+		$('.wrapper').fadeOut('slow');
 
-	// 	$('.wrapper').fadeOut('slow');
-	// 	// $('.container').html(characterData.loadCharactersData());
-
-	// 	if ($('li').hasClass('comic')) {
-	// 		var source = $('#comics-template').html(),
-	// 			template = Handlebars.compile(source);
-
-	// 		$('body').append(template(data));
-	// 	}
-	// });
+		$.ajax({
+			url : "js/guardians.json",
+			dataType :"json",
+			type : "GET"
+					
+		}).done(function(data) {
+			resultsPlaceholder.html(template(data));
+			console.log(data);
+		}).error(function(data){
+			console.error('JSON not loaded!');
+		});
+	});
 
 });
 

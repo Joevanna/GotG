@@ -22,9 +22,8 @@
 		"abilities" : "Gamora is a highly accomplished athlete, gymnast, and hand-to-hand combatant.",
 		"appearance" : "Strange Tales #180",
 		"comicImg" : "images/comics/strange-tales-180.jpg",
-		"image" : "images/characters/Gam.jpg",
-		"description" : "The last of the Zen-Whoberi race, Gamora was adopted by the villainous Thanos and raised as an assassin. Gamora turned on her adopted father and now uses her abilities to help those who cannot help themselves. A veteran of the Annihilation Wave, Gamora now travels with the Guardians of the Galaxy and is known as the Most Dangerous Woman in the Universe.",
-
+		"image" : "images/characters/Gamora.jpg",
+		"description" : "The last of the Zen-Whoberi race, Gamora was adopted by the villainous Thanos and raised as an assassin. Gamora turned on her adopted father and now uses her abilities to help those who cannot help themselves. A veteran of the Annihilation Wave, Gamora now travels with the Guardians of the Galaxy and is known as the Most Dangerous Woman in the Universe."
 	},
 
 	{
@@ -35,7 +34,7 @@
 		"abilities" : "Rocket has many of the same abilities as a normal raccoon, such as a heightened sense of smell and sight as compared to a human.",
 		"appearance": "Marvel Preview #7 (1976)",
 		"comicImg" : "images/comics/Marvel_Preview_Vol_1_7.jpg",
-		"image" : "images/characters/2rocket2.jpg",
+		"image" : "images/characters/Rocket.jpg",
 		"description" : "An expert marksman with a penchant for large weaponry, Rocket Raccoon is the last of his kind. After being captured by the Kree, Rocket teams up with Star-Lord and other adventurers to form the Guardians of the Galaxy. Together, they travel the galaxy and defend it from those who wish it harm."
 	},
 
@@ -48,7 +47,7 @@
 		"abilities": "none",
 		"appearance" : "Tales to Astonish #13 (1960)",
 		"comicImg" : "images/comics/Tales_to_Astonish_Vol_1_13.jpg",
-		"image" : "images/characters/2rocket2.jpg",
+		"image" : "images/characters/groot.jpg",
 		"description" : "The tree-like creature known as Groot was captured by the Kree and put on a team with Star-Lord, Bug, Mantis, and Rocket Raccoon. A tree of few words, Groot formed a bond with the creature known as Rocket Raccoon. Forming the Guardians of the Galaxy, Groot and his best friend Rocket travel through space getting into trouble wherever they go."
 	},
 
@@ -61,7 +60,7 @@
 		"abilities" : "Unrevealed",
 		"appearance" : " Iron Man #55 (1973)",
 		"comicImg" : "images/comics/Iron_Man_Vol_1_55.jpg",
-		"image" : "images/characters/drax2.jpg",
+		"image" : "images/characters/drax.png",
 		"description" : "After being murdered along with his family by Thanos, Arthur Douglas was reborn as Drax the Destroyer, a superhuman warrior designed to defeat the mad Titan. Recruited by Star-Lord to join the Guardians of the Galaxy, Drax possesses superhuman strength, durability and a healing factor making him strong enough to face any threat he comes across."
 
 	}
