@@ -1,0 +1,229 @@
+// *********************************************** //
+// *********************************************** //
+// *********************************************** //
+
+// MOBILE STYLING 
+
+// *********************************************** //
+// *********************************************** //
+// *********************************************** //
+
+body.mobile {
+	background: url('../images/ironwall.jpg') #000 top center no-repeat;
+	background-attachment: fixed;
+	font-family: 'Rajdhani', sans-serif;
+	height: 0vh;
+	
+	.wrapper {
+		max-width: 90%;
+		margin: 0 auto;
+
+		header img {
+			width: 100%;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			@include transform(translate(-50%, -50%));
+			z-index: 2;
+			transition: all .4s linear;
+
+			&.mob-active {
+				top: 30%;
+			}
+		}
+	}
+
+	// *********************************************** //
+
+	// HOMEPAGE SELECTION MENU
+
+	// *********************************************** //
+
+		.nav {
+			height:100vh;
+			width: 100%;
+
+			.wrap {
+				position: fixed;
+		  		top: 40%;
+		  	
+		  		width: 400px;
+		  		@include transform(translate(0, -50%));
+				position: relative;
+				left: -350%;
+				text-align: center;
+
+				&.mobile {
+					left: 0;
+					width: 320px;
+					top: 60%;
+				}
+			}
+
+			.btn-team, p {
+				background: rgba($colorPurple, .3);
+			    color: $colorPurple;
+			    border: 1px solid $colorPurple;
+			}
+
+			.btn-team {
+				font-size: 2em;
+				width: 100%;
+				cursor: pointer;	
+				border-top: transparent;	   
+			    display: block;
+
+				}
+
+			p {
+			    font-size: 1em;
+			    padding: 20px;
+				@include transition(all, .2s, ease-in-out);
+
+				&.selected {
+				  	@include box-shadow(0 3px 0 5px $colorBlack inset);
+				}
+			}
+		}
+
+		.wrap.visible {
+			left: 0;
+		}
+
+
+		// *********************************************** //
+
+		// CHARACTER AND AUTHORS SELECTON STYLING 
+
+		// *********************************************** //
+
+		.container-characters {
+
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			height: 100%;
+
+			.back {			
+				text-transform: uppercase;
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 20px;
+				text-align: center;
+				border-radius: 25% 0 0 25%;
+				background-color: rgba($colorPurple, .3);
+				color: #000;
+				font-weight: bold;
+				z-index: 99;
+				font-size: 1.2em;
+			}
+
+			.item {
+				display: flex;
+				flex-grow: 1;
+				align-items: flex-start;
+				cursor: pointer;
+				text-align: center;
+				@include transition(all .5s ease);
+				background-size: cover;
+				background-position: top center;
+				background-repeat: no-repeat;
+				position: relative;
+				overflow: hidden;
+
+				&:after { display: none; }
+
+				 .popup {
+				 	display: none;
+				 	position: relative;
+				 	overflow: scroll;
+				 	border: 2px solid $colorPurple;
+				 	background-color: rgba($colorPurple, .9);
+				 	border-radius: 5px;
+				 	font-size: 1.4em;
+				 	color: black;
+				 	width: 100%;
+				 	height: 100vh;
+				 	text-align: left;
+				 	@include box-shadow( 
+						0 0 25px $colorPurpleBg,
+				    	0 1px 5px $colorPurpleBg);
+
+				 	h1 {
+				 		font-size: 4em;
+				 		text-align: center;
+				 		margin: 10px 0;
+				 	}
+
+				 	.general, .general p {
+				 		display: block;
+				 	}
+
+				 	p {
+				 		padding: 10px 20px 0;
+						line-height: 1.2;
+				 	}
+				 }
+
+			&.touched {
+				height: 100%;
+				background-size: auto;
+				background-position: right top;
+				box-shadow: inset 0 0 20px #000;
+				@include transition(all .3s ease-in);
+
+				.popup { display: block; }
+			}
+		}
+
+		.book-container {
+			padding: 30px;
+			width: 30%;
+			position: relative;
+			-webkit-perspective: 1800px;
+
+			.book {
+				position: relative;
+				width: 200px;
+				height: 300px;
+				@include transition(transform .5s);
+				transform-style: preserve-3d;
+				backface-visibility: hidden;
+
+
+				.book-cover {
+					position: absolute;
+					background-color: rgba(#555, .4);
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					@include transform(translateZ(20px));
+
+					img { width: 100%; height: 100%; }
+				}
+
+				.book-spine {
+					position: absolute;
+					left: -20px;
+					width: 40px;
+					height: 270px;
+					@include transform(rotate3d(0, 1, 0, -90deg));
+
+					p {
+						width: 300px;
+						height: 40px;
+						margin: 0;
+						padding: 0 2em;
+						color: #fff;
+						background-color: #000;
+						font-size: 1.2em;
+						transform-origin: 0 0;
+						@include transform(rotate(90deg) translateY(-35px));
+					}
+				}
+			}
+		}
+	}
+}

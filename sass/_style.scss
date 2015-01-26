@@ -11,268 +11,364 @@
 
 html, body { height: 100%; }
 
-body {
-	background: url('../images/ironwall.jpg') #000 top center no-repeat;
-	background-attachment: fixed;
-	// background: url('../images/spac.jpg') center center fixed;
-	font-family: 'Rajdhani', sans-serif;
-}
-	
-.wrapper {
-	max-width: 90%;
-	margin: 0 auto;
-
-	header img {
-		width: 100%;
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		@include transform(translate(-50%, -50%));
-		z-index: 2;
-		transition: all .4s linear;
-
-		&.active {
-			@include transform(scale(.5));
-			top: 10%;
-			left: 25%;
-		}
-	}
-}
-
-// *********************************************** //
-
-// HOMEPAGE SELECTION MENU
-
-// *********************************************** //
-
-.glow {
-	@include box-shadow( 
-		0 0 25px $colorDamnLight,
-    	0 1px 5px $colorBlack);
-	border-color: $colorDamnLight;
-	background: $colorDamnLight;
-	color: rgba($colorBlack, .7);
-}
-
-.nav {
-	height:100vh;
-	width: 400px;
-
-	ul {
-		position: fixed;
-  		top: 40%;
-  
-  		@include transform(translate(0, -50%));
-		position: relative;
-		left: -350%;
-	}
-	li {
-		list-style: none;
-		line-height: 50px;
-	    border: 1px solid $colorLight;
-	    border-bottom: none;
-	    background: rgba($colorLight, .3);
-	    color: $colorLight;
-	    font-size: 2em;
-	    text-align: center;
-	    cursor: pointer;
-		width: 400px;
-		height: 50px;
-		@include transition(all, .2s, ease-in-out);
-
-		&:last-child {
-			border-bottom: 1px solid $colorLight;
-		}
-
-		&:hover {
-			@extend .glow;
-	        font-size: 1.8em;
-	        z-index: 99;
-		}
-
-		&.selected {
-			@extend .glow;
-		  	@include box-shadow(0 3px 0 5px $colorBlack inset);
-		  
-		  	@for $i from 1 through 3 {
-		    	&:nth-child(#{$i}) {
-		      	top: 50px * ($i - 1);
-		      	@if $i % 2 == 0 {
-		        	@include transform3d(skew(45deg) scaleY(0) translate(100%));
-		      	} @else {
-		        	@include transform3d(skew(45deg) scaleY(0) translate(-100%));
-		      	}
-		    }
-		  }
-		}
-	}
-}
-
-ul.visible {
-	left: 0;
-}
-
-
-// *********************************************** //
-
-// CHARACTER AND AUTHORS SELECTON STYLING 
-
-// *********************************************** //
-
-.container-characters {
-
+.loader-container {
+	width: 100%;
+	height: 100vh;
+	background-color: black;
 	display: flex;
-	flex-direction: row;
-	align-items: stretch;
-	height: 100%;
-
-	.item {
-		display: flex;
-		flex-grow: 1;
-		align-items: flex-start;
-		text-align: center;
-		@include transition(all .5s ease);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		position: relative;
-		overflow: hidden;
-
-		img { width: 100%; }
-
-		p { 
-			display: none;
-
-		 }
-
-		&:hover {
-			flex-grow: 4;
-			box-shadow: inset 0 0 20px #000;
-
-			p { 
-				display: block;
-				align-self: flex-start;
-				font-size: 2em;
-				margin: 5% auto;
-				color: $colorLight;
-			 }
-		}
-
-		&:after {
-			content: "";
-			width: 200%;
-			height: 43.33%;
-			background: rgba($colorLight, .3);
-			position: absolute;
-			left: -50%;
-			bottom: -10%;
-			@include transform(rotate(-15deg));
-			color: $colorLight;
-			text-align: center;
-			padding-top: 20px;
-			text-transform: uppercase;
-			font-size: 3.5em;
-		}
-
-		&:nth-child(1) {
-			background-position: 70% center;
-			&:after {
-				content: "star lord";
-			}
-		}
-
-		&:nth-child(2) {
-			background-position: 45% center;
-			&:after {
-				content: "gamora";
-			}
-		}
-
-		&:nth-child(3) {
-			background-position: 70% center;
-			&:after {
-				content: "rocket racoon";
-			}
-		}
-
-		&:nth-child(4) {
-			background-position: 70% center;
-			&:after {
-				content: "groot";
-			}
-		}
-
-		&:nth-child(5) {
-			background-position: 75% center;
-			&:after {
-				content: "drax";
-			}
-		}
-	}
-}
-
-// *********************************************** //
-
-// COMICS SHOWCASE STYLING
-
-// *********************************************** //
-
-
-.comics {
-	display: none;
-	// display: flex;
-	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	flex-wrap: wrap;
+}
 
-	h1 {
-		display: block;
-		color: $colorLight;
-		font-size: 5em;
-		padding: 50px 0;
-		text-align: center;
-		width: 100%;
-		text-transform: uppercase;
-		text-shadow: 0px 0px 20px rgba($colorDamnLight, 1);
+#preloader{
+    position:relative;
+    width:30px;
+    height:30px;
+    background:#3498db;
+    border-radius:50px;
+    animation: preloader_5 1.5s infinite linear;
+}
+#preloader:after{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-top:10px solid #9b59b6;
+    border-bottom:10px solid #9b59b6;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-radius:50px;
+    content:'';
+    top:-20px;
+    left:-20px;
+    animation: preloader_5_after 1.5s infinite linear;
+}
+@keyframes preloader_5 {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(180deg);background:#2ecc71;}
+    100% {transform: rotate(360deg);}
+}
+@keyframes preloader_5_after {
+    0% {border-top:10px solid #9b59b6;border-bottom:10px solid #9b59b6;}
+    50% {border-top:10px solid #3498db;border-bottom:10px solid #3498db;}
+    100% {border-top:10px solid #9b59b6;border-bottom:10px solid #9b59b6;}
+}
+
+body.desktop {
+	background: url('../images/ironwall.jpg') #000 top center no-repeat;
+	background-attachment: fixed;
+	font-family: 'Rajdhani', sans-serif;
+	height: 0vh;
+	
+	.wrapper {
+		max-width: 90%;
+		margin: 0 auto;
+
+		header img {
+			width: 100%;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			@include transform(translate(-50%, -50%));
+			z-index: 2;
+			transition: all .4s linear;
+
+			&.active {
+				@include transform(scale(.5));
+				top: 10%;
+				left: 25%;
+			}
+
+			&.mob-active {
+				top: 30%;
+			}
+		}
 	}
 
+	// *********************************************** //
+
+	// HOMEPAGE SELECTION MENU
+
+	// *********************************************** //
+
+	.glow {
+		@include box-shadow( 
+			0 0 25px $colorPurpleBg,
+	    	0 1px 5px $colorPurpleBg);
+		border-color: $colorPurpleBg;
+		background: $colorPurpleBg;
+		color: rgba($colorPurple, .7);
+	}
+
+	.nav {
+		height:100vh;
+		width: 400px;
+
+		.wrap {
+			position: fixed;
+	  		top: 40%;
+	  	
+	  		width: 400px;
+	  		@include transform(translate(0, -50%));
+			position: relative;
+			left: -350%;
+			text-align: center;
+
+			&.mobile {
+				left: 0;
+				width: 320px;
+				top: 60%;
+			}
+		}
+
+		.btn-team, p {
+			 background: rgba($colorPurple, .3);
+		    color: $colorPurple;
+		    border: 1px solid $colorPurple;
+		}
+
+		.btn-team {
+			font-size: 2em;
+			width: 100%;
+			cursor: pointer;	
+			border-top: transparent;	   
+		    display: block;
+
+		    	&:hover {
+					@extend .glow;
+			        font-size: 1.8em;
+				}
+			}
+
+		p {
+		    font-size: 1em;
+		    padding: 20px;
+			@include transition(all, .2s, ease-in-out);
+
+			&.selected {
+				@extend .glow;
+			  	@include box-shadow(0 3px 0 5px $colorBlack inset);
+			  
+			  // 	@for $i from 1 through 3 {
+			  //   	&:nth-child(#{$i}) {
+			  //     	top: 50px * ($i - 1);
+			  //     	@if $i % 2 == 0 {
+			  //       	@include transform3d(skew(45deg) scaleY(0) translate(100%));
+			  //     	} @else {
+			  //       	@include transform3d(skew(45deg) scaleY(0) translate(-100%));
+			  //     	}
+			  //   }
+			  // }
+			}
+		}
+	}
+
+	.wrap.visible {
+		left: 0;
+	}
+
+
+	// *********************************************** //
+
+	// CHARACTER AND AUTHORS SELECTON STYLING 
+
+	// *********************************************** //
+
+	.container-characters {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		height: 100%;
+		
+		.back {
+			text-transform: uppercase;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 20px;
+			text-align: center;
+			border-radius: 25% 0 0 25%;
+			background-color: rgba($colorPurple, .3);
+			color: #000;
+			font-weight: bold;
+			z-index: 99;
+			font-size: 1.2em;
+			cursor: pointer;
+		}
+
+
+		.item {
+			display: flex;
+			flex-grow: 1;
+			align-items: flex-start;
+			cursor: pointer;
+			text-align: center;
+			@include transition(all .5s ease);
+			background-size: cover;
+			background-position: top center;
+			background-repeat: no-repeat;
+			position: relative;
+			overflow: hidden;
+
+			 .popup {
+			 	display: none;
+			 	position: relative;
+			 	border: 2px solid $colorPurple;
+			 	background-color: rgba($colorPurple, .3);
+			 	border-radius: 5px;
+			 	color: $colorPurple;
+			 	width: 65%;
+			 	height: 100vh;
+			 	text-align: left;
+			 	@include box-shadow( 
+					0 0 25px $colorPurpleBg,
+			    	0 1px 5px $colorPurpleBg);
+
+			 	h1 {
+			 		font-size: 4em;
+			 		text-align: center;
+			 		margin: 10px 0;
+			 	}
+
+			 	.more {
+				    max-height: 40px;
+				    overflow: hidden;
+				    @include transition(max-height .4s ease-out);
+				    &:hover {
+				    	max-height: 400px;	
+				    }
+				}
+
+			 	.general {
+			 		display: flex;
+			 		p {
+			 			display: inline;
+			 		}
+			 	}
+
+			 	p {
+			 		padding: 10px 20px 0;
+					line-height: 1.7;
+			 	}
+			 }
+
+			&:hover {
+				flex-grow: 4;
+				box-shadow: inset 0 0 20px #000;
+			}
+
+			&:after {
+				content: "";
+				width: 200%;
+				height: 43.33%;
+				background: rgba($colorPurple, .3);
+				position: absolute;
+				left: -50%;
+				bottom: -10%;
+				@include transform(rotate(-15deg));
+				color: $colorPurple;
+				text-align: center;
+				padding-top: 20px;
+				text-transform: uppercase;
+				font-size: 3.5em;
+			}
+
+			&:nth-child(1) {
+				// background-position: 70% top;
+				&:after {
+					content: "star lord";
+				}
+			}
+
+			&:nth-child(2) {
+				// background-position: 45% top;
+				&:after {
+					content: "gamora";
+				}
+			}
+
+			&:nth-child(3) {
+				// background-position: 70% top;
+				&:after {
+					content: "rocket racoon";
+				}
+			}
+
+			&:nth-child(4) {
+				// background-position: 70% top;
+				&:after {
+					content: "groot";
+				}
+			}
+
+			&:nth-child(5) {
+				// background-position: 75% top;
+				&:after {
+					content: "drax";
+				}
+			}
+		}
+
+		.selected {
+			width: 100%;
+			background-size: auto;
+			background-position: right top;
+			@include transition(all .3s ease-in);
+			background-size: 35% auto;
+
+			p, .popup {
+				display: block;
+			}
+
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+	// *********************************************** //
+
+	// COMIC STYLING 
+
+	// *********************************************** //
+
 	.book-container {
-		padding: 30px 0;
+		padding: 30px;
 		width: 30%;
 		position: relative;
 		-webkit-perspective: 1800px;
-		z-index: 10;
 
 		.book {
 			position: relative;
-			width: 250px;
-			height: 350px;
+			width: 200px;
+			height: 300px;
 			@include transition(transform .5s);
 			transform-style: preserve-3d;
 			backface-visibility: hidden;
 
 			&:hover { @include transform(rotate3d(0, 1, 0, 45deg)); }
 
-			.book__cover {
+			.book-cover {
 				position: absolute;
 				background-color: rgba(#555, .4);
 				top: 0;
 				left: 0;
-				width: 250px;
+				width: 100%;
 				height: 100%;
 				@include transform(translateZ(20px));
+
+				img { width: 100%; height: 100%; }
 			}
 
-			.book__spine {
+			.book-spine {
 				position: absolute;
 				left: -20px;
 				width: 40px;
-				height: 350px;
+				height: 270px;
 				@include transform(rotate3d(0, 1, 0, -90deg));
 
 				p {
-					width: 350px;
+					width: 300px;
 					height: 40px;
 					margin: 0;
 					padding: 0 2em;
@@ -285,21 +381,5 @@ ul.visible {
 			}
 		}
 	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

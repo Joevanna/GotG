@@ -21,36 +21,77 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+        <div class="loader-container">
+            <div id="preloader"></div>
+        </div>
         
+
         <section class="wrapper">
-            <header class="header">
-                <img src="images/GOTG-Logo.png" alt="">     
+            <header class="header" role="header" aria-label="Header Image">
+                <img src="images/GOTG-Logo.png" alt="Guardians of the Galaxy Logo">     
             </header>
 
-            <nav class="nav" role="navigation">
-                <ul>
-                    <li>Dummy text. </li>
-                 <!--    <p>led by Star-Lord, the Guardians of the Galaxy protect the universe from threats all across space. The team also includes Drax, Gamora, Groot and Rocket Raccoon!</p> -->
-                    <li class="team">Click me</li>
+            <div class="nav" role="navigation" aria-label="Character selection"> 
+                <div class="wrap">
+                    <p aria-label="Introduction">Led by Star-Lord, the Guardians of the Galaxy protect the universe from threats all across space. The team also includes Drax, Gamora, Groot and Rocket Raccoon!</p>
+                    <a class="btn-team" aria-label="Button">Click me</a>
+                </div>
+                
 
-                </ul>
-            </nav>
+            </div>
+        </section>
+       
+    
+
+        <section class="container-characters" aria-hidden="true">
         </section>
 
-        <section class="container-characters">
-            <script id="characters-template" type="text/x-handlebars-template">
+        <script id="characters-template" type="text/x-handlebars-template">
+                <span class="back">back</span>
                 {{#each characters}}
-                    <div class="item">
-                       <img src="{{image}}" alt=""> 
+                    <div class="item" style="background-image:url({{image}});" aria-label="{{name}}">
+                    
+                        <div class="popup" >
+                            <h1>{{name}}</h1>
+                            <div class="general">
+                                <p><strong>Real name:</strong> {{realName}}</p>
+                                <p><strong>Height:</strong> {{height}}</p>
+                                <p><strong>Weight:</strong> {{weight}}</p>
+                            </div>
+                            
+                            <div class="more">
+                                <p><strong>Description:</strong> {{description}}</p>
+                            </div> 
+                            <div class="more">
+                                <p><strong>Powers:</strong> {{powers}}</p>
+                            </div>
+                            <div class="more">
+                                <p><strong>Abilities:</strong> {{abilities}}</p>
+                            </div>
+
+                             <div class="appearance">
+                                <p><strong>First appearance:</strong> {{appearance}}</p>
+                                <div class="book-container">
+                                    <article class="book">
+                                        <div class="book-cover">
+                                            <img src="{{comicImg}}" alt="{{appearance}}">
+                                        </div>
+                                        <div class="book-spine">
+                                            <p>{{appearance}}</p>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>          
                     </div>
                 {{/each}}
             </script>
-        </section>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
         <script src="js/handlebars-v2.0.0.js"></script>
         <script src="js/plugins.js"></script>
+        <script type='text/javascript' src="//wurfl.io/wurfl.js"></script>
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
